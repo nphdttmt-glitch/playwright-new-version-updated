@@ -1,7 +1,6 @@
 import { test, expect } from "../../fixtures/test-fixture";
 import { DashboardPage } from "../../pages/dashboard/dashboard.page";
 import { CartPage } from "../../pages/cart/cart.page";
-import { Config } from "../../config/env.config";
 import { step } from "allure-js-commons";
 import { getRandomArrayElement } from "../../utils/helpers";
 
@@ -29,7 +28,7 @@ test.describe("Remove from cart", () => {
         });
 
         await step(`Remove product "${productName}" from cart`, async () => {
-            await cartPage.removeFromCart(productName!);
+            await cartPage.removeProductFromCart(productName!);
         });
 
         await step(`Verify product "${productName}" is removed from cart`, async () => {
@@ -62,7 +61,7 @@ test.describe("Remove from cart", () => {
         });
 
         await step(`Remove product "${firstProductName}" from cart`, async () => {
-            await cartPage.removeFromCart(firstProductName!);
+            await cartPage.removeProductFromCart(firstProductName!);
         });
 
         await step(`Verify product "${firstProductName}" is removed from cart`, async () => {
@@ -97,9 +96,9 @@ test.describe("Remove from cart", () => {
         });
 
         await step(`Remove all products from cart`, async () => {
-            await cartPage.removeFromCart(firstProductName!);
-            await cartPage.removeFromCart(secondProductName!);
-            await cartPage.removeFromCart(thirdProductName!);
+            await cartPage.removeProductFromCart(firstProductName!);
+            await cartPage.removeProductFromCart(secondProductName!);
+            await cartPage.removeProductFromCart(thirdProductName!);
         });
 
         await step("Verify all products are removed from cart", async () => {

@@ -22,16 +22,16 @@ export class LoginPage extends BasePage {
     // 🚀 Actions
     // =========================
     async login(username: string, password: string) {
-        await step(`Nhập username: ${username}`, async () => {
-            await this.type(this.usernameInput, username, "Nhập username");
+        await step(`Enter username: ${username}`, async () => {
+            await this.type(this.usernameInput, username, "Enter username");
         });
 
-        await step(`Nhập password`, async () => {
-            await this.type(this.passwordInput, password, "Nhập password");
+        await step(`Enter password`, async () => {
+            await this.type(this.passwordInput, password, "Enter password");
         });
 
-        await step(`Click nút login`, async () => {
-            await this.click(this.loginButton, "Click nút login");
+        await step(`Click login button`, async () => {
+            await this.click(this.loginButton, "Click login button");
         });
     }
 
@@ -39,8 +39,8 @@ export class LoginPage extends BasePage {
     // 📦 Helpers
     // =========================
     async getMessage(): Promise<string | null> {
-        return await step("Lấy message sau khi login", async () => {
-            return this.getText(this.message, "Lấy message");
+        return await step("Get message after login", async () => {
+            return this.getText(this.message, "Get message");
         });
     }
 

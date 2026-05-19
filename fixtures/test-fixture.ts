@@ -10,18 +10,17 @@ type MyFixtures = {
 
 export const test = base.extend<MyFixtures>({
     user: async ({ }, use) => {
-        // user credentials từ env.config.ts
         await use(Config.credentials);
     },
 
     loggedInPage: async ({ page, user }, use) => {
         const loginPage = new LoginPage(page);
 
-        await step("Đi tới trang login", async () => {
+        await step("Go to Login page", async () => {
             await loginPage.goto(Config.baseURL);
         });
 
-        await step(`Login với user: ${user.username}`, async () => {
+        await step(`Login with user: ${user.username}`, async () => {
             await loginPage.login(user.username, user.password);
         });
 

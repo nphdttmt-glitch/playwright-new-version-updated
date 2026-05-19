@@ -23,27 +23,27 @@ export class DashboardPage extends BasePage {
     async addToCart(productName: string) {
         const productLocator = this.page.locator(`//div[contains(@class, "inventory_item") and .//div[contains(text(), "${productName}")]]`);
         const addToCartButton = productLocator.locator('xpath=.//button[text()="Add to cart"]');
-        await step(`Click nút "Add to cart" cho sản phẩm: ${productName}`, async () => {
-            await this.click(addToCartButton, `Click nút "Add to cart" cho sản phẩm: ${productName}`);
+        await step(`Click "Add to cart" button for product: ${productName}`, async () => {
+            await this.click(addToCartButton, `Click "Add to cart" button for product: ${productName}`);
         });
     }
 
     async addToCartByIndex(index: number) {
         const productLocator = this.page.locator(`//div[@class="inventory_list"]//div[@class="inventory_item"][${index}]`);
         const addToCartButton = productLocator.locator('xpath=.//button[text()="Add to cart"]');
-        await step(`Click nút "Add to cart" cho sản phẩm ở vị trí: ${index}`, async () => {
-            await this.click(addToCartButton, `Click nút "Add to cart" cho sản phẩm ở vị trí: ${index}`);
+        await step(`Click "Add to cart" button for product at index: ${index}`, async () => {
+            await this.click(addToCartButton, `Click "Add to cart" button for product at index: ${index}`);
         });
     }
 
     async goToCart() {
-        await step("Đi tới giỏ hàng", async () => {
-            await this.click(this.shoppingCartButton, "Click nút giỏ hàng");
+        await step("Go to Cart", async () => {
+            await this.click(this.shoppingCartButton, "Click cart button");
         });
     }
 
     async selectProductSortOption(option: string) {
-        await step(`Chọn tùy chọn sắp xếp sản phẩm: ${option}`, async () => {
+        await step(`Select product sort option: ${option}`, async () => {
             await this.productsSortComboBox.selectOption(option);
         });
     }
@@ -52,7 +52,7 @@ export class DashboardPage extends BasePage {
     // 📦 Helpers
     // =========================
     async getProductNames(): Promise<(string | null)[]> {
-        return await step("Lấy danh sách tên sản phẩm", async () => {
+        return await step("Get list of product names", async () => {
             const productNames = [];
             const products = this.page.locator('//div[normalize-space(@class) = "inventory_item_name"]');
             for (let i = 0; i < await products.count(); i++) {
@@ -63,7 +63,7 @@ export class DashboardPage extends BasePage {
     }
 
     async getProductPrices(): Promise<(number | null)[]> {
-        return await step("Lấy danh sách giá sản phẩm", async () => {
+        return await step("Get list of product prices", async () => {
             const productPrices = [];
             const prices = this.page.locator('//div[normalize-space(@class) = "inventory_item_price"]');
             for (let i = 0; i < await prices.count(); i++) {
@@ -81,15 +81,15 @@ export class DashboardPage extends BasePage {
     async assertRemovebuttonVisible(productName: string) {
         const productLocator = this.page.locator(`//div[contains(@class,"inventory_item") and .//div[contains(text(), "${productName}")]]`);
         const removeButton = productLocator.locator('xpath=.//button[text()="Remove"]');
-        await step(`Xác minh nút "Remove" hiển thị cho sản phẩm: ${productName}`, async () => {
-            await this.assertVisible(removeButton, `Nút "Remove" cho sản phẩm: ${productName} được hiển thị`);
+        await step(`Verify "Remove" button is visible for product: ${productName}`, async () => {
+            await this.assertVisible(removeButton, `"Remove" button for product: ${productName} is visible`);
         });
     }
 
     async assertAddToCartButtonInvisible(productName: string) {
         const productLocator = this.page.locator(`//div[contains(@class,"inventory_item") and .//div[contains(text(), "${productName}")]]`);
         const addToCartButton = productLocator.locator('xpath=.//button[text()="Add to cart"]');
-        await step(`Xác minh nút "Add to cart" không hiển thị cho sản phẩm: ${productName}`, async () => {
+        await step(`Verify "Add to cart" button is not visible for product: ${productName}`, async () => {
             await expect(addToCartButton).toBeHidden(); 
         });
     }
@@ -100,7 +100,7 @@ export class DashboardPage extends BasePage {
             (name): name is string => name !== null
         );
 
-        await step(`Xác minh sản phẩm đã được sắp xếp theo tên (${order})`, async () => {
+        await step(`Verify products are sorted by name (${order})`, async () => {
             expect(isSorted(productNames, order)).toBe(true);
         });
     }
@@ -111,7 +111,7 @@ export class DashboardPage extends BasePage {
             (price): price is number => price !== null
         );
 
-        await step(`Xác minh sản phẩm đã được sắp xếp theo giá (${order})`, async () => {
+        await step(`Verify products are sorted by price (${order})`, async () => {
             expect(isSorted(productPrices, order)).toBe(true);
         });
     }

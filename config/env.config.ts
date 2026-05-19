@@ -1,7 +1,6 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-// Khai báo tên môi trường
 export type EnvironmentName = 'qa' | 'dev' | 'staging' | 'prod';
 
 interface Credentials {
@@ -14,7 +13,6 @@ interface EnvironmentConfig {
     credentials: Credentials;
 }
 
-// Danh sách môi trường
 const environments: Record<EnvironmentName, EnvironmentConfig> = {
     qa: {
         baseURL: 'https://www.saucedemo.com/',
@@ -46,7 +44,6 @@ const environments: Record<EnvironmentName, EnvironmentConfig> = {
     },
 };
 
-// Lấy ENV từ terminal hoặc mặc định là qa
 const currentEnv: EnvironmentName = (process.env.ENV as EnvironmentName) || 'qa';
 
 export const Config: EnvironmentConfig = environments[currentEnv];

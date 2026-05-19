@@ -9,33 +9,33 @@ npm run report:generate
 Open Allure report
 npm run report:open
 
-Xóa kết quả cũ (allure-results + allure-report)
+Remove old result (allure-results + allure-report)
 npm run report:clean
 
 ## Run test
-Chạy toàn bộ test
+Run all test
 npm run test
 
-Chạy login.test.ts
+Run login.test.ts
 npm run test:login
  
 # Chrome 
-Chạy test với Chrome (ENV=qa) - default
+Run test with Chrome (ENV=qa) - default
 npm run test:chrome
 
-Chạy test với Chrome (ENV=dev)
+Run test with Chrome(ENV=dev)
 npm run test:dev-chrome
 
 # Firefox
-Chạy test với Firefox (ENV=qa) - default
+Run test with Firefox (ENV=qa) - default
 npm run test:firefox
 
-Chạy test với Firefox (ENV=dev)
+Run test with Firefox (ENV=dev)
 npm run test:dev-firefox
 
 # Webkit
-Chạy test với Webkit (ENV=qa) - default
+Run test with Webkit (ENV=qa) - default
 npm run test:webkit
 
-Chạy test với Webkit (ENV=dev)
+Run test with Webkit (ENV=dev)
 npm run test:dev-webkit
