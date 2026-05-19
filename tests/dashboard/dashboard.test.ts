@@ -1,5 +1,5 @@
 import { test, expect } from "../../fixtures/test-fixture";
-import { DashboardPage } from "../../pages/dashboard/dashboard.page";
+import { DashboardPage } from "../../src/pages/dashboard/dashboard.page";
 import { step } from "allure-js-commons";
 import { getRandomArrayElement } from "../../utils/helpers";
 

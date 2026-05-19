@@ -1,7 +1,7 @@
 import { test as base, Page } from "@playwright/test";
 import { LoginPage } from "../pages/login/login.page";
 import { step } from "allure-js-commons";
-import { Config } from "../config/env.config";
+import { Config } from "../../config/env.config";
 
 type MyFixtures = {
     user: { username: string; password: string };
