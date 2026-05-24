@@ -1,4 +1,4 @@
-import { test, expect } from "../../fixtures/test-fixture";
+import { test, expect } from "../../src/fixtures/test-fixture";
 import { DashboardPage } from "../../src/pages/dashboard/dashboard.page";
 import { CartPage } from "../../src/pages/cart/cart.page";
 import { step } from "allure-js-commons";
